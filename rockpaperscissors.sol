@@ -22,8 +22,8 @@ contract RockPaperScissors {
     uint256 private _firstReveal; // Moment of first reveal
 
     // Players' addresses
-    address payable public playerA;
-    address payable public playerB;
+    address public playerA;
+    address public playerB;
 
     // Encrypted moves
     bytes32 private _encrMovePlayerA;
@@ -59,11 +59,11 @@ contract RockPaperScissors {
         returns (uint256)
     {
         if (playerA == address(0)) {
-            playerA = payable(msg.sender);
+            playerA = msg.sender;
             initialBet = msg.value;
             return 1;
         } else if (playerB == address(0)) {
-            playerB = payable(msg.sender);
+            playerB = msg.sender;
             return 2;
         }
         return 0;
@@ -178,11 +178,9 @@ contract RockPaperScissors {
             outcome = Outcomes.PlayerB;
         }
 
-        address payable addrA = playerA;
-        address payable addrB = playerB;
         uint256 betPlayerA = initialBet;
         _reset(); // Reset game before paying to avoid reentrancy attacks
-        _pay(addrA, addrB, betPlayerA, outcome);
+        _pay(payable(playerA), payable(playerB), betPlayerA, outcome);
 
         return outcome;
     }
@@ -213,8 +211,8 @@ contract RockPaperScissors {
     function _reset() private {
         initialBet = 0;
         _firstReveal = 0;
-        playerA = payable(address(0));
-        playerB = payable(address(0));
+        playerA = address(0);
+        playerB = address(0);
         _encrMovePlayerA = 0;
         _encrMovePlayerB = 0;
         _movePlayerA = Moves.None;

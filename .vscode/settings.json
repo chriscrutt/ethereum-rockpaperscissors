@@ -1,0 +1,34 @@
+{
+    "solidity.solhintRules": {
+        "code-complexity": ["warn", 7],
+        "function-max-lines": ["warn", 50],
+        "no-unused-vars": "warn",
+        "max-line-length": ["warn", 119],
+        "quotes": ["warn", "double"],
+        "const-name-snakecase": "warn",
+        "contract-name-camelcase": "warn",
+        "event-name-camelcase": "warn",
+        "func-name-mixedcase": "warn",
+        "func-param-name-mixedcase": "warn",
+        "modifier-name-mixedcase": "warn",
+        "private-vars-leading-underscore": [
+            "warn",
+            {
+                "strict": false
+            }
+        ],
+        "use-forbidden-name": "warn",
+        "var-name-mixedcase": "warn",
+        "func-order": "warn",
+        "imports-on-top": "warn",
+        "ordering": false,
+        "visibility-modifier-order": "warn",
+        "func-visibility": [
+            "warn",
+            {
+                "ignoreConstructors": true
+            }
+        ],
+        "state-visibility": "warn"
+    }
+}
