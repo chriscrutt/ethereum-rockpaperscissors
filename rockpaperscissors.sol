@@ -39,13 +39,19 @@ contract RockPaperScissors {
 
     // Bet must be greater than a minimum amount and greater than bet of first player
     modifier validBet() {
-        require(msg.value >= BET_MIN);
-        require(initialBet == 0 || msg.value >= initialBet);
+        require(msg.value >= BET_MIN, "bet is less than min bet");
+        require(
+            initialBet == 0 || msg.value >= initialBet,
+            "second bet must >= first"
+        );
         _;
     }
 
     modifier notAlreadyRegistered() {
-        require(msg.sender != playerA && msg.sender != playerB);
+        require(
+            msg.sender != playerA && msg.sender != playerB,
+            "already registered!"
+        );
         _;
     }
 
@@ -74,7 +80,10 @@ contract RockPaperScissors {
     /**************************************************************************/
 
     modifier isRegistered() {
-        require(msg.sender == playerA || msg.sender == playerB);
+        require(
+            msg.sender == playerA || msg.sender == playerB,
+            "isn't registered!"
+        );
         _;
     }
 
@@ -96,7 +105,10 @@ contract RockPaperScissors {
     /**************************************************************************/
 
     modifier commitPhaseEnded() {
-        require(_encrMovePlayerA != 0 && _encrMovePlayerB != 0);
+        require(
+            _encrMovePlayerA != 0 && _encrMovePlayerB != 0,
+            "commit phase hasn't ended"
+        );
         _;
     }
 
@@ -155,7 +167,8 @@ contract RockPaperScissors {
         require(
             (_movePlayerA != Moves.None && _movePlayerB != Moves.None) ||
                 (_firstReveal != 0 &&
-                    block.timestamp > _firstReveal + REVEAL_TIMEOUT)
+                    block.timestamp > _firstReveal + REVEAL_TIMEOUT),
+            "reveal phase hasn't ended"
         );
         _;
     }

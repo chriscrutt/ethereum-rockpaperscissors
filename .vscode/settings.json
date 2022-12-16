@@ -1,34 +1,49 @@
 {
     "solidity.solhintRules": {
+        // Best Practice Rules
         "code-complexity": ["warn", 7],
         "function-max-lines": ["warn", 50],
+        "max-line-length": ["error", 120],
+        "max-states-count": ["warn", 15],
+        "no-empty-blocks": "warn",
         "no-unused-vars": "warn",
-        "max-line-length": ["warn", 119],
-        "quotes": ["warn", "double"],
+        "payable-fallback": "warn",
+        "reason-string": ["warn", { "maxLength": 32 }],
+        "constructor-syntax": "warn",
+        // Miscellaneous
+        // "comprehensive-interface": "warn",
+        // Style Guide Rules
+        "quotes": ["error", "double"],
         "const-name-snakecase": "warn",
         "contract-name-camelcase": "warn",
         "event-name-camelcase": "warn",
         "func-name-mixedcase": "warn",
         "func-param-name-mixedcase": "warn",
         "modifier-name-mixedcase": "warn",
-        "private-vars-leading-underscore": [
-            "warn",
-            {
-                "strict": false
-            }
-        ],
+        "private-vars-leading-underscore": ["warn", { "strict": false }],
         "use-forbidden-name": "warn",
         "var-name-mixedcase": "warn",
-        "func-order": "warn",
         "imports-on-top": "warn",
-        "ordering": false,
+        "func-order": "warn",
+        "ordering": "off",
         "visibility-modifier-order": "warn",
-        "func-visibility": [
-            "warn",
-            {
-                "ignoreConstructors": true
-            }
-        ],
+        // Security Ruless
+        "avoid-call-value": "warn",
+        "avoid-low-level-calls": "warn",
+        "avoid-sha3": "warn",
+        "avoid-suicide": "warn",
+        "avoid-throw": "warn",
+        "avoid-tx-origin": "warn",
+        "check-send-result": "warn",
+        // "compiler-version": ["error", "^0.5.8"],
+        "func-visibility": ["warn", { "ignoreConstructors": false }],
+        // "mark-callable-contracts": "warn",
+        "multiple-sends": "warn",
+        "no-complex-fallback": "warn",
+        "no-inline-assembly": "warn",
+        "not-rely-on-block-hash": "warn",
+        // "not-rely-on-time": "warn",
+        "reentrancy": "warn",
         "state-visibility": "warn"
     }
 }
